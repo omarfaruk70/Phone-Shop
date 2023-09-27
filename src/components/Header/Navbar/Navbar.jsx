@@ -7,7 +7,7 @@ const Navbar = () => {
         <div>
           <h1 className="text-xl font-semibold">Phone Shop</h1>
         </div>
-        <ul className="flex gap-20">
+        <ul className="flex gap-5 md:gap-14  lg:gap-20">
           <li>
             <NavLink
               to={"/"}

@@ -1,7 +1,11 @@
-const  Home = () => {
+import Banner from "../../assets/Banner";
+import Phones from "../Phones/Phones";
+
+const Home = () => {
     return (
         <div>
-           <h1>This is homepage</h1>
+            <Banner></Banner>
+            <Phones></Phones>
         </div>
     );
 };
