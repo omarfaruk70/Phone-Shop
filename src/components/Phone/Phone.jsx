@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 const Phone = ({ phone }) => {
   // console.log(phone);
-  const { brand_name, image, phone_name, price, rating } = phone || ''  ;
+  const {id, brand_name, image, phone_name, price, rating } = phone || ''  ;
   return (
     <div className="relative flex w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
       <div className="relative mx-4 mt-4 h-96 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
@@ -24,12 +25,14 @@ const Phone = ({ phone }) => {
         </p>
       </div>
       <div className="p-6 pt-0">
+        <Link to={`/phone/${id}`}>
         <button
           className="block w-full bg-gray-400  hover:bg-blue-500 hover:text-white select-none rounded-lg  py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase  transition-all hover:scale-105 focus:scale-105 focus:opacity-[1] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-md"
           type="button"
         >
-          Favourite
+          See Details
         </button>
+        </Link>
       </div>
     </div>
   );
