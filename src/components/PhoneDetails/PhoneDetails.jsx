@@ -23,8 +23,8 @@ const PhoneDetails = () => {
       const duplicateExist = getItem.find(item=>item.id === id );
       if(!duplicateExist){
         favouriteItemsArray.push(...getItem, phoneData);
-        alert('Favourite item added');
         localStorage.setItem('favouritesPhone', JSON.stringify(favouriteItemsArray));
+        swal("Good job!", "Item added!", "success");
       }
       else{
         swal("Opps ! Sorry!", "Already Added!", "error");
