@@ -1,10 +1,39 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import swal from 'sweetalert';
+
 
 const PhoneDetails = () => {
   const datas = useLoaderData();
   const { id } = useParams();
   const phoneData = datas.find((data) => data.id === id);
-  const {brand_name, image, phone_name} = phoneData
+  const {brand_name, image, phone_name} = phoneData;
+
+  // check and add items to localstorage.
+  const handleAddToFavourites = () =>{
+    const favouriteItemsArray = [];
+    const getItem = JSON.parse(localStorage.getItem('favouritesPhone'));
+
+    if(!getItem){
+    favouriteItemsArray.push(phoneData);
+    localStorage.setItem('favouritesPhone', JSON.stringify(favouriteItemsArray));
+    swal("Good job!", "Item added!", "success");
+    }
+
+    else{
+      const duplicateExist = getItem.find(item=>item.id === id );
+      if(!duplicateExist){
+        favouriteItemsArray.push(...getItem, phoneData);
+        alert('Favourite item added');
+        localStorage.setItem('favouritesPhone', JSON.stringify(favouriteItemsArray));
+      }
+      else{
+        swal("Opps ! Sorry!", "Already Added!", "error");
+      }
+    }
+  }
+
+
+
   return (
     <div>
       <div className="h-36 py-5 bg-teal-200">
@@ -27,7 +56,7 @@ const PhoneDetails = () => {
              {brand_name}
             </h4>
             <a className="inline-block" href="#">
-              <button
+              <button onClick={handleAddToFavourites}
                 className="flex select-none items-center gap-2 rounded-lg py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-pink-500  transition-all hover:bg-pink-500/10 active:bg-pink-600 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button"
               >
