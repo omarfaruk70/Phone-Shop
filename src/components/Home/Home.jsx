@@ -1,4 +1,4 @@
-import Banner from "../../assets/Banner";
+import Banner from "../Banner/Banner";
 import Phones from "../Phones/Phones";
 
 const Home = () => {
